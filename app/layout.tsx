@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { cn } from "@/lib/utils";
-import Navbar from "@/components/navbar";
 import Provider from "@/provider/provider";
+import { Toaster } from "@/components/ui/toaster";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -14,11 +13,9 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
-
 export const metadata: Metadata = {
-  title: "LinkUp - Create LinkedIn Post",
-  description: "Automatically generate professional LinkedIn posts with ease. Enhance your social media presence with customized content."
-
+  title: "SnipAI - Create LinkedIn and Twitter Posts",
+  description: "Generate professional LinkedIn and Twitter posts with ease. Enhance your social media presence with customized content."
 };
 
 export default function RootLayout({
@@ -29,13 +26,11 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning={true}>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} min-h-screen bg-white dark:bg-black antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} h-screen bg-white dark:bg-black antialiased`}
       >
         <Provider>
-          <div className={cn("relative flex min-h-dvh flex-col")}>
-            <Navbar />
-            <main className="flex-1 px-6">{children}</main>
-          </div>
+          {children}
+          <Toaster />
         </Provider>
       </body>
     </html>

@@ -22,8 +22,8 @@ export async function POST(req: NextRequest) {
       
       const model = genAI.getGenerativeModel({
         model: process.env.AI_MODEL ?? ""
-    });
-
+      });
+    
       const result = await model.generateContent(prompt);
       const response = result.response;
       const text = response.text();
