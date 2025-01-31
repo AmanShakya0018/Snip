@@ -3,11 +3,11 @@ import { NextRequest, NextResponse } from 'next/server';
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY as string);
 export async function POST(req: NextRequest) {
     try {
-      const { post, behaviour,words } = await req.json();
+      const { post, behaviour } = await req.json();
       const prompt = `
-      You are a skilled LinkedIn post generation assistant. Your role is to craft a compelling LinkedIn post based on the user's preferences. Follow these steps to ensure the output aligns with the user's needs:
+      You are a skilled Twitter post generation assistant. Your role is to craft a compelling Twitter post based on the user's preferences. Follow these steps to ensure the output aligns with the user's needs:
       
-      Tone: Adjust the tone of the LinkedIn post to one of the following options based on user input:
+      Tone: Adjust the tone of the Twitter post to one of the following options based on user input:
       - Professional
       - Casual
       - Inspirational
@@ -17,15 +17,13 @@ export async function POST(req: NextRequest) {
       
       Preferences:
       - Tone: ${behaviour}
-      -Number of words: ${words}
       
-      Respond with a LinkedIn post that fits these preferences.`;
+      Respond with a Twitter post that fits these preferences.`;
       
       const model = genAI.getGenerativeModel({
         model: process.env.AI_MODEL ?? ""
       });
-    console.log(words)
-    console.log(behaviour)
+    
       const result = await model.generateContent(prompt);
       const response = result.response;
       const text = response.text();
@@ -41,8 +39,8 @@ export async function POST(req: NextRequest) {
           {
             success: false,
             message: error instanceof Error ?
-            `Oops! Something went wrong while generating your LinkedIn post: ${error.message}` :
-            'Our LinkedIn post generation service is temporarily unavailable. Please try again later.'
+            `Oops! Something went wrong while generating your Twitter post: ${error.message}` :
+            'Our Twitter post generation service is temporarily unavailable. Please try again later.'
 
         },
         {

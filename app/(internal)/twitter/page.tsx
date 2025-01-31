@@ -1,4 +1,5 @@
 "use client"
+import TwitterPost from '@/components/TwitterPost';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import React, { useEffect } from 'react'
@@ -14,7 +15,9 @@ const Twitter = () => {
   }, [status, router]);
 
   return (
-    <div>Twitter</div>
+    <div>
+      <TwitterPost />
+    </div>
   )
 }
 

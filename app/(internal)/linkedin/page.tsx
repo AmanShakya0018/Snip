@@ -1,4 +1,5 @@
 "use client"
+import LinkedinPost from '@/components/LinkedinPost';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import React, { useEffect } from 'react'
@@ -15,7 +16,7 @@ const LinkedIN = () => {
 
   return (
     <div>
-      hi
+      <LinkedinPost />
     </div>
   )
 }

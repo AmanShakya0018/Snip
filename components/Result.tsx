@@ -1,48 +1,54 @@
 import { IoMdCopy } from "react-icons/io";
-import TypeWriter from "./TypeWriter";
-import useResult from "@/hooks/useresult";
-import { FaWandMagicSparkles } from "react-icons/fa6";
+import { useState, useEffect } from "react";
+import useResult from "@/hooks/useResult";
+import { toast } from "@/hooks/use-toast";
 
-type ResultProps = {
-  modifyPrompt: string;
-  isModifyField: boolean;
-  setModifyPrompt: (modifyPrompt: string) => void;
-  handleRegenerate: () => void;
-  copyToClipboard: () => void;
-}
-export default function Result({ modifyPrompt, isModifyField, setModifyPrompt, handleRegenerate, copyToClipboard }: ResultProps) {
+export default function Result() {
   const { result } = useResult();
+  const [displayedText, setDisplayedText] = useState("");
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const speed = 20;
+
+  useEffect(() => {
+    if (currentIndex < (result?.length || 0)) {
+      const timer = setTimeout(() => {
+        setDisplayedText((prev) => prev + result[currentIndex]);
+        setCurrentIndex((prev) => prev + 1);
+      }, speed);
+      return () => clearTimeout(timer);
+    }
+  }, [currentIndex, result, speed]);
+
+  useEffect(() => {
+    setDisplayedText("");
+    setCurrentIndex(0);
+  }, [result]);
+
+  const copyToClipboard = () => {
+    if (!result) return;
+    navigator.clipboard.writeText(result);
+    toast({
+      description: "Copied to clipboard",
+    });
+  };
+
   return (
-    <div className={`flex flex-col gap-2 w-[60vw] mt-6 py-3 ${result ? 'block' : 'hidden'}`}>
-      <div className="flex justify-end gap-2 relative" >
-        <input
-          type="text"
-          onChange={(e) => setModifyPrompt(e.target.value)}
-          value={modifyPrompt}
-          className={`text-white text-xs w-0 transition-all duration-300 ${isModifyField ? 'w-[35vw] px-2 border border-white/20' : 'w-0'} bg-white rounded-lg bg-opacity-10 backdrop-blur-lg focus:outline-none focus:border-white/20`}
-        />
-        <button
-          onClick={handleRegenerate}
-          className="relative bg-transparent rounded-lg p-2 text-white
-                    before:absolute before:inset-0 before:rounded-lg before:p-[1px]
-                    before:bg-gradient-to-r before:from-indigo-500 before:via-purple-500 before:to-indigo-500
-                    before:animate-border-rotate before:content-['']
-                    hover:before:bg-gradient-to-r hover:before:from-indigo-500 hover:before:via-purple-500 hover:before:to-indigo-500
-                    after:absolute after:inset-[1px] after:rounded-lg after:bg-transparent after:content-['']
-                    hover:after:bg-gradient-to-r hover:after:from-indigo-500/40 hover:after:to-purple-500/40
-                    transition-all duration-300"
+    <div
+      className={`flex flex-col gap-2 w-full mt-2 py-3 ${result ? "block" : "hidden"}`}
+    >
+      <div className="flex bg-neutral-100 dark:bg-neutral-900 backdrop-blur-lg overflow-hidden whitespace-pre-wrap rounded-lg border dark:md:shadow-xl">
+        <div
+          className="relative text-sm w-full py-4 pl-4 pr-2"
         >
-          <span className="relative z-10">
-            <FaWandMagicSparkles className="hover:scale-110" />
-          </span>
+          {displayedText}
+        </div>
+        <button
+          onClick={copyToClipboard}
+          className={`bg-transparent h-fit rounded-lg text-white pt-2 pr-2`}
+        >
+          <IoMdCopy className="h-5 w-5" />
         </button>
-        <button onClick={copyToClipboard} className={`bg-transparent rounded-lg before:bg-opacity-5 backdrop-blur-lg border border-white/20 text-white p-2 ${result ? 'block' : 'hidden'} `}>
-          <IoMdCopy />
-        </button>
-      </div>
-      <div className="text-white w-full mt-3">
-        <TypeWriter text={result} speed={30} />
       </div>
     </div>
-  )
+  );
 }

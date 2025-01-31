@@ -4,6 +4,7 @@ import { ThemeProvider } from "./theme-provider";
 import PostProvider from "@/context/PostContext";
 import ResultProvider from "@/context/ResultContext";
 import { SessionProvider } from "next-auth/react";
+import BehaviourProvider from "@/context/BehaviourContext";
 
 type Props = {
   children: ReactNode
@@ -14,14 +15,16 @@ const Provider = ({ children }: Props) => {
     <SessionProvider>
       <PostProvider>
         <ResultProvider>
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="dark"
-            enableSystem
-            disableTransitionOnChange
-          >
-            {children}
-          </ThemeProvider>
+          <BehaviourProvider>
+            <ThemeProvider
+              attribute="class"
+              defaultTheme="dark"
+              enableSystem
+              disableTransitionOnChange
+            >
+              {children}
+            </ThemeProvider>
+          </BehaviourProvider>
         </ResultProvider>
       </PostProvider>
     </SessionProvider>
