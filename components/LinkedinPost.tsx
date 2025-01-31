@@ -69,7 +69,7 @@ export default function LinkedinPost() {
             setPost(e.target.value);
             adjustTextareaHeight();
           }}
-          placeholder="Type your topic"
+          placeholder="Type your topic..."
           className="h-fit text-white w-full bg-transparent focus:outline-none focus:border-none max-h-[300px]"
           rows={1}
         />

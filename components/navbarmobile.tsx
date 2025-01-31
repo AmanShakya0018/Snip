@@ -2,7 +2,6 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import SignInButton from './SignInButton';
 import { useSession } from 'next-auth/react';
 import { Themetoggle } from './ThemeToggle';
 import UserAccountNavMobile from './UserAccountNavMobile';
@@ -33,11 +32,8 @@ const MobileNavbar = () => {
           </div>
           <div className="md:hidden flex items-center space-x-1">
             <Themetoggle />
-            {session?.user ? (
-              <UserAccountNavMobile user={session.user} />
-            ) : (
-              <SignInButton text={"Sign In"} />
-            )}
+            {session?.user &&
+              <UserAccountNavMobile user={session.user} />}
           </div>
         </div>
       </div>

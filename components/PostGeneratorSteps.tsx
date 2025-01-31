@@ -32,7 +32,7 @@ function StepCard({ number, title, description }: { number: number; title: strin
           {number}
         </div>
         <h2 className="text-xl font-semibold mb-2 text-center">{title}</h2>
-        <p className="text-muted-foreground text-center text-sm">{description}</p>
+        <p className="text-neutral-500 text-center text-sm">{description}</p>
       </CardContent>
     </Card>
   )
