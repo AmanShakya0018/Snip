@@ -8,8 +8,13 @@ import Link from 'next/link'
 import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/navigation'
 import Image from 'next/image'
+import usePost from '@/hooks/usePost'
+import useResult from '@/hooks/useResult'
 
 const Dashboard = () => {
+
+  const { setPost } = usePost();
+  const { setResult } = useResult();
 
   const { status } = useSession();
   const router = useRouter();
@@ -29,7 +34,7 @@ const Dashboard = () => {
         </p>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-3 w-full items-center justify-center px-4 py-10">
-        <Link href="/linkedin" className="block w-full">
+        <Link onClick={() => { setResult(''); setPost(''); }} href="/linkedin" className="block w-full">
           <Card className="h-72 bg-neutral-100 dark:bg-neutral-950">
             <CardContent className="flex h-full flex-col justify-between p-6">
               <div className="flex flex-col items-center space-y-4 text-center">
@@ -53,7 +58,7 @@ const Dashboard = () => {
             </CardContent>
           </Card>
         </Link>
-        <Link href="/twitter" className="block w-full">
+        <Link onClick={() => { setResult(''); setPost(''); }} href="/twitter" className="block w-full">
           <Card className="h-72 bg-neutral-100 dark:bg-neutral-950">
             <CardContent className="flex h-full flex-col justify-between p-6">
               <div className="flex flex-col items-center space-y-4 text-center">
