@@ -26,7 +26,7 @@ const MobileNavbar = () => {
                 alt="logo.png"
                 quality={100}
                 priority={true}
-                className="w-10 h-10 mt-1 rounded-full object-cover flex-shrink-0"
+                className="w-14 h-14 mt-1 rounded-full object-cover flex-shrink-0"
               />
             </Link>
           </div>

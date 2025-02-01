@@ -1,5 +1,6 @@
 import React from 'react'
-import { FaHouse, FaLinkedin, FaTwitter } from 'react-icons/fa6'
+import { FaLinkedin, FaTwitter } from 'react-icons/fa6'
+import { MdDashboard } from "react-icons/md";
 import AnchorMobileNav from './anchor-mobilenav'
 
 const MobileNav = () => {
@@ -13,7 +14,7 @@ const MobileNav = () => {
           absolute
           href={"/dashboard"}
         >
-          <FaHouse className='h-6 w-6' />
+          <MdDashboard className='h-6 w-6' />
         </AnchorMobileNav>
         <AnchorMobileNav
           key="linkedin"

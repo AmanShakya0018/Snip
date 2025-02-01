@@ -43,7 +43,7 @@ const UserAccountNavMobile = ({ user }: Props) => {
         </div>
         <DropdownMenuSeparator />
         <DropdownMenuItem asChild>
-          <Link href="/dashboard" className="text-zinc-700 dark:text-zinc-300">Dashboard</Link>
+          <Link href="/" className="text-zinc-700 dark:text-zinc-300">Home</Link>
         </DropdownMenuItem>
 
         <DropdownMenuSeparator />
