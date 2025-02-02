@@ -3,28 +3,30 @@
 import { signIn } from 'next-auth/react';
 import Image from 'next/image'
 import Link from 'next/link'
+import { MdPostAdd } from 'react-icons/md';
+import { BiCustomize } from "react-icons/bi";
+import { FaUsers } from "react-icons/fa";
 
 export default function SignInPage() {
   return (
 
     <div className='min-h screen'>
       <div className="flex min-h-screen bg-background">
-        <div className="hidden md:flex md:w-1/2 bg-emerald-500 items-center justify-center p-8">
+        <div className="hidden md:flex md:w-1/2 bg-emerald-600 items-center justify-center p-8">
           <div className="space-y-6">
-            <h1 className="text-4xl font-bold text-white">Happening now</h1>
+            <h1 className="text-4xl font-bold text-white">Create Impactful Posts</h1>
             <div className="space-y-4">
               <div className="flex items-center space-x-4 text-white">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 20l4-16m2 16l4-16M6 9h14M4 15h14"></path></svg>
-                <span className="text-xl">Join the conversation</span>
+                <MdPostAdd className="h-8 w-8" />
+                <span className="text-xl">Generate engaging content</span>
               </div>
               <div className="flex items-center space-x-4 text-white">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z"></path></svg>
-                <span className="text-xl">Share your thoughts</span>
+                <BiCustomize className="h-8 w-8" />
+                <span className="text-xl">Customize tone & style</span>
               </div>
               <div className="flex items-center space-x-4 text-white">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path></svg>
-                <span className="text-xl">Connect globally</span>
+                <FaUsers className="h-8 w-8" />
+                <span className="text-xl">Enhance your online presence</span>
               </div>
             </div>
           </div>
