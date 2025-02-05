@@ -9,6 +9,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
+import { IoIosHelpCircle } from "react-icons/io";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
 import { Textarea } from "./ui/textarea";
 import Result from "./Result";
 import usePost from "@/hooks/usePost";
@@ -70,7 +72,7 @@ export default function TwitterPost() {
             setPost(e.target.value);
             adjustTextareaHeight();
           }}
-          placeholder="Type your topic..."
+          placeholder="Type your post details..."
           className="h-fit text-white w-full bg-transparent focus:outline-none focus:border-none max-h-[300px]"
           rows={1}
         />
@@ -94,7 +96,7 @@ export default function TwitterPost() {
                 </Select>
               </div>
             </div>
-            <div className="flex gap-3">
+            <div className="flex gap-3 items-center">
               <div>
                 <Select onValueChange={(value: string) => {
                   setWords(value);
@@ -108,6 +110,18 @@ export default function TwitterPost() {
                   </SelectContent>
                 </Select>
               </div>
+              <TooltipProvider>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <IoIosHelpCircle className="h-4 w-4 text-neutral-500" />
+                  </TooltipTrigger>
+                  <TooltipContent side="right"
+                    align="start"
+                    className="bg-zinc-100 dark:bg-zinc-800 border-none">
+                    <p className="text-xs text-neutral-500">Enter relevant text to get the best results</p>
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
             </div>
           </div>
           <div>
