@@ -111,7 +111,12 @@ export default function TwitterPost() {
             </div>
           </div>
           <div>
-            <button className="bg-transparent rounded-lg before:bg-opacity-5 hover:bg-white/10 border border-neutral-300 dark:border-neutral-700 text-black dark:text-white p-2" onClick={handleGenerate}>
+            <button
+              className={`bg-transparent rounded-lg before:bg-opacity-5 hover:bg-white/10 border border-neutral-300 dark:border-neutral-700 text-black dark:text-white p-2 transition-all duration-300 ${!post ? "opacity-50 cursor-not-allowed" : ""
+                }`}
+              onClick={handleGenerate}
+              disabled={!post}
+            >
               {isGenerating ? <Spinner size={"small"} /> : <FaArrowTurnUp className="h-4 w-4" />}
             </button>
           </div>
