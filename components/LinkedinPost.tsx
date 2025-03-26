@@ -16,10 +16,11 @@ import Result from "./Result";
 import usePost from "@/hooks/usePost";
 import useResult from "@/hooks/useResult";
 import useBehaviour from "@/hooks/useBehaviour";
-import { FaArrowTurnUp } from "react-icons/fa6";
 import { Spinner } from "./ui/spinner";
 import PostGeneratorSteps from "./PostGeneratorSteps";
 import { useSession } from "next-auth/react";
+import { cn } from "@/lib/utils";
+import { SendIcon } from "lucide-react";
 
 
 export default function LinkedinPost() {
@@ -66,14 +67,29 @@ export default function LinkedinPost() {
       <div className="w-full relative p-2 bg-neutral-100 dark:bg-neutral-900 rounded-md border border-neutral-300 dark:border-neutral-700 flex flex-col items-center justify-center dark:shadow-none shadow mt-10">
         <Textarea
           ref={textareaRef}
+          placeholder="Type your post details..."
           value={post}
           onChange={(e) => {
-            setPost(e.target.value);
+            setPost(e.target.value)
             adjustTextareaHeight();
           }}
-          placeholder="Type your post details..."
-          className="h-fit text-white w-full bg-transparent focus:outline-none focus:border-none max-h-[300px]"
-          rows={1}
+          onKeyDown={(e) => {
+            if (e.key === "Enter" && !e.shiftKey) {
+              e.preventDefault()
+              handleGenerate()
+            }
+          }}
+          className={cn(
+            "w-full px-4 py-3",
+            "resize-none",
+            "bg-transparent",
+            "border-none",
+            "text-zinc-100 text-base",
+            "focus:outline-none",
+            "focus-visible:ring-0 focus-visible:ring-offset-0",
+            "placeholder:text-zinc-500 placeholder:text-base",
+            "min-h-[60px]",
+          )}
         />
         <div className="flex justify-between items-end w-full gap-3 mt-6">
           <div className="flex justify-between items-center gap-3">
@@ -130,7 +146,7 @@ export default function LinkedinPost() {
               onClick={handleGenerate}
               disabled={!post}
             >
-              {isGenerating ? <Spinner size={"small"} /> : <FaArrowTurnUp className="h-4 w-4" />}
+              {isGenerating ? <Spinner size={"small"} /> : <SendIcon className="h-4 w-4" />}
             </button>
           </div>
         </div>
