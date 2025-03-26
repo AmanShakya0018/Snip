@@ -6,8 +6,34 @@ import Link from 'next/link'
 import { MdPostAdd } from 'react-icons/md';
 import { BiCustomize } from "react-icons/bi";
 import { FaUsers } from "react-icons/fa";
+import { Loader2 } from 'lucide-react';
+import { useState } from 'react';
 
 export default function SignInPage() {
+
+  const [signinLoading, setSigninLoading] = useState(false);
+  const [createAccount, setCreateAccount] = useState(false);
+
+  const handleSignIn = async () => {
+    setSigninLoading(true);
+    try {
+      await signIn('google', { callbackUrl: '/' });
+    } catch (error) {
+      console.error('Failed to sign in:', error);
+      setSigninLoading(false);
+    }
+  };
+
+  const handleCreateAccount = async () => {
+    setCreateAccount(true);
+    try {
+      await signIn('google', { callbackUrl: '/' });
+    } catch (error) {
+      console.error('Failed to sign in:', error);
+      setCreateAccount(false);
+    }
+  };
+
   return (
 
     <div className='min-h screen'>
@@ -40,12 +66,19 @@ export default function SignInPage() {
               <p className="mt-2 text-sm text-muted-foreground">Join SnipAI today.</p>
             </div>
             <div className="space-y-4">
-              <button className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground shadow hover:bg-primary/90 h-10 rounded-md px-8 w-full"
-                onClick={() => {
-                  signIn("google", { callbackUrl: "/" });
-                }}
+              <button
+                className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground shadow hover:bg-primary/90 h-10 rounded-md px-8 w-full"
+                onClick={handleCreateAccount}
+                disabled={createAccount}
               >
-                Create Account
+                {createAccount ? (
+                  <>
+                    <Loader2 className="animate-spin w-4 h-4" />
+                    Creating Account...
+                  </>
+                ) : (
+                  'Create Account'
+                )}
               </button>
               <div className="relative">
                 <div className="absolute inset-0 flex items-center">
@@ -56,12 +89,19 @@ export default function SignInPage() {
                   <span className="bg-background px-2 text-muted-foreground">Or</span>
                 </div>
               </div>
-              <button className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 text-foreground border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground h-10 rounded-md px-8 w-full"
-                onClick={() => {
-                  signIn("google", { callbackUrl: "/" });
-                }}
+              <button
+                className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 text-foreground border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground h-10 rounded-md px-8 w-full"
+                onClick={handleSignIn}
+                disabled={signinLoading}
               >
-                Sign in
+                {signinLoading ? (
+                  <>
+                    <Loader2 className="animate-spin w-4 h-4" />
+                    Signing in...
+                  </>
+                ) : (
+                  'Sign in'
+                )}
               </button>
             </div>
             <p className="text-sm text-muted-foreground text-center">By signing up, you agree to the <Link className='underline' href="/termsofservice">Terms of Service</Link> and <Link className='underline' href="/privacypolicy">Privacy Policy.</Link></p>

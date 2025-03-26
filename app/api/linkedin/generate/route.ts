@@ -35,9 +35,6 @@ STRICT GUIDELINES FOR OUTPUT:
 
 4. **Clarity and Precision**: The post must be clear, impactful, and concise while maintaining readability and a professional format for LinkedIn.
 
-5. **HANDLING VERY SHORT INPUTS**:  
-   - If the provided content is too short to generate a meaningful LinkedIn post, the AI **MUST PROMPT THE USER TO ADD MORE DETAILS** instead of generating an inadequate post.
-
 INPUT DETAILS:
 - **Content**: "${post}"
 - **Style**: "${behaviour}"
@@ -58,7 +55,7 @@ OUTPUT EXPECTATIONS:
 - Word Count: **50-100**
 
 **Output (STRICTLY within 50-100 words, No Emojis/Hashtags):**  
-"Excited to dive into my new AI project focused on predicting trends! Exploring cutting-edge technology is both challenging and rewarding, and I’m eager to see how this can shape the future. AI’s potential is limitless, and I’m committed to driving innovation through this project. By leveraging advanced algorithms and data insights, I aim to uncover emerging patterns, push boundaries, and make meaningful contributions to the field, helping businesses and industries stay ahead of the curve."
+"Excited to dive into my new AI project, focused on predicting trends. It’s an exhilarating challenge to work on cutting-edge technology that has the potential to shape the future. The possibilities of AI are limitless, and I’m eager to explore how this project can contribute to advancements in the field and drive innovation."
 
 ---
 
@@ -71,6 +68,8 @@ OUTPUT EXPECTATIONS:
 "I’m currently developing a machine learning model aimed at analyzing sales data to provide more accurate predictions. By leveraging advanced algorithms and data insights, this project will help businesses make informed decisions that drive growth and improve operational efficiency. The ability to predict trends and consumer behavior with precision can significantly enhance marketing strategies, inventory management, and overall business performance.  
 
 This project is particularly exciting because it allows me to explore real-world applications of AI while working with a diverse dataset. The challenge lies in fine-tuning the model to ensure accuracy and efficiency. However, the potential impact on business intelligence makes the effort worthwhile. I look forward to seeing how this model evolves and the insights it can generate, ultimately making businesses more data-driven, agile, and competitive in an ever-changing market."  
+
+(**Word Count: 150+ words**)  
 
 ---
 
@@ -86,6 +85,8 @@ I’ve mastered the art of nodding thoughtfully while frantically Googling a sol
 
 But despite the chaos, remote work has given me flexibility, uninterrupted deep focus (when Slack isn't buzzing), and the ability to work alongside my cat—who now believes he's part of the development team. It’s a challenge, but one I wouldn’t trade for anything (except maybe better Wi-Fi)."  
 
+(**Word Count: 160+ words**)  
+
 ---
 
 #### **Example 4: Word Limit 100-200 (Formal Tone, Correct Length)**  
@@ -100,14 +101,15 @@ With cybersecurity threats evolving rapidly, it has become crucial to stay updat
 
 Cybersecurity is a field that requires continuous learning, and I am eager to explore further specializations in areas such as cloud security and threat intelligence. By staying proactive and engaged with the latest security advancements, I aim to contribute meaningfully to the industry and support efforts in building a more secure digital environment."  
 
+(**Word Count: 180+ words**)  
+
 ---
 
 ### **FINAL INSTRUCTIONS:**  
 1. **STRICTLY APPLY the selected tone (${behaviour}) and ENSURE the post adheres to the exact word limit (${words}).**  
 2. **STRICTLY PROHIBITED**: Emojis, hashtags, markdown, or any additional informal elements.  
 3. **STRICTLY ENSURE WORD LIMIT COMPLIANCE BY COUNTING WORDS BEFORE FINALIZING OUTPUT.**  
-4. **IF THE USER INPUT IS TOO SHORT TO CREATE A MEANINGFUL LINKEDIN POST, PROMPT THEM TO PROVIDE MORE DETAILS RATHER THAN GENERATING AN INADEQUATE POST.**  
-5. **FINAL OUTPUT MUST BE A REFINED, LINKEDIN-READY POST WITH PERFECT WORD COUNT (do not show the word count in the output, just keep it to yourself).**  
+4. **FINAL OUTPUT MUST BE A REFINED, LINKEDIN-READY POST WITH PERFECT WORD COUNT(do not show the word count in the output just keep to to yourself).**  
 
 Now, based on the provided input details, generate the refined post accordingly.
 `;
