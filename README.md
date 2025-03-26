@@ -39,7 +39,7 @@ To clone the repository locally, use the following commands:
 
 ```bash
 git clone https://github.com/your-username/Snip.git
-cd chat-app
+cd Snip
 ```
 
 ### Installation
