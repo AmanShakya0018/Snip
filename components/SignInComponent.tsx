@@ -38,7 +38,7 @@ export default function SignInPage() {
 
     <div className='min-h screen'>
       <div className="flex min-h-screen bg-background">
-        <div className="hidden md:flex md:w-1/2 bg-emerald-600 items-center justify-center p-8">
+        <div className="hidden md:flex md:w-1/2 bg-yellow-400 items-center justify-center p-8">
           <div className="space-y-6">
             <h1 className="text-4xl font-bold text-white">Create Impactful Posts</h1>
             <div className="space-y-4">
@@ -61,9 +61,9 @@ export default function SignInPage() {
           <div className="w-full max-w-md space-y-8">
             <div>
 
-              <Image src="/logo.png" width={500} height={500} alt="logo" className='h-12 w-12' />
+              <Image src="/logo.png" width={500} height={500} alt="logo" className='h-16 w-16' />
               <h2 className="mt-6 text-3xl font-bold tracking-tight text-foreground">See what&apos;s happening</h2>
-              <p className="mt-2 text-sm text-muted-foreground">Join SnipAI today.</p>
+              <p className="mt-2 text-sm text-muted-foreground">Join Snip.AI today.</p>
             </div>
             <div className="space-y-4">
               <button
