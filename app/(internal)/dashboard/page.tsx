@@ -50,7 +50,7 @@ const Dashboard = () => {
                 </div>
               </div>
               <div className="flex justify-center pt-4">
-                <Button className="bg-green-500 hover:bg-green-600">
+                <Button className="bg-yellow-500 hover:bg-yellow-600">
                   <Snowflake className="mr-2 h-4 w-4" />
                   Generate
                 </Button>
@@ -73,7 +73,7 @@ const Dashboard = () => {
                 </div>
               </div>
               <div className="flex justify-center pt-4">
-                <Button className="bg-green-500 hover:bg-green-600 ">
+                <Button className="bg-yellow-500 hover:bg-yellow-600 ">
                   <Snowflake className="mr-2 h-4 w-4" />
                   Generate
                 </Button>
