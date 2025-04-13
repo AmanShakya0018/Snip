@@ -24,7 +24,7 @@ const Footer = () => {
           </div>
           <div className="mt-2 text-zinc-400">
             Build by
-            <a className="dark:text-yellow-300 pl-1 font-medium text-neutral-600" target="__blank" href="https://www.amanshakya.in">@AmanShakya</a>
+            <a className="dark:text-neutral-400 pl-1 font-medium text-neutral-600" target="__blank" href="https://www.amanshakya.in">@AmanShakya</a>
           </div>
           <div className="mt-2 mr-2 max-w-fit">
             <Link href="https://x.com/compose/tweet?text=%F0%9F%93%A2%20Created%20a%20professional%20post%20with%20%23SnipAI!%20Effortlessly%20generate%20engaging%20content%20for%20LinkedIn%20and%20Twitter%20%F0%9F%92%AC%20%40amanshakya0018

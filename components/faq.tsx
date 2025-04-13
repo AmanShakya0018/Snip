@@ -11,19 +11,11 @@ interface FAQItemProps {
   index: number;
 }
 
-function FAQItem({ question, answer, index }: FAQItemProps) {
+function FAQItem({ question, answer }: FAQItemProps) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 10 }}
-      whileInView={{ opacity: 1, scale: 1 }}
-      viewport={{ once: true }}
-      transition={{
-        duration: 0.3,
-        delay: index * 0.15,
-        ease: "easeOut",
-      }}
       className={cn(
         "group rounded-lg border-[0.5px] border-neutral-200/70 dark:border-neutral-800/60",
         "transition-all duration-200 ease-in-out",
@@ -145,17 +137,18 @@ function FAQ() {
       question: "Is SnipAI free to use?",
       answer: "Yes! SnipAI is completely free and open-source. You can start generating professional content without any cost, and we welcome contributions to enhance the platform.",
     },
-
   ];
 
   return (
     <section className="py-24 w-full bg-linear-to-b from-transparent via-gray-50/50 to-transparent dark:from-transparent dark:via-white/[0.02] dark:to-transparent">
-      <div className="container px-4 mx-auto">
+      <motion.div
+
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+        className="container px-4 mx-auto">
         <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
           className="max-w-2xl mx-auto text-center mb-12"
         >
           <h2 className="text-3xl font-semibold mb-3 bg-linear-to-r from-gray-900 via-gray-800 to-gray-900 dark:from-white dark:via-gray-100 dark:to-white bg-clip-text">
@@ -171,7 +164,7 @@ function FAQ() {
             <FAQItem key={index} {...faq} index={index} />
           ))}
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }
